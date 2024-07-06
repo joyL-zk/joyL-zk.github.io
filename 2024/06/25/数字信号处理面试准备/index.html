@@ -1,167 +1,332 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数字信号处理面试题 | joyL</title><meta name="author" content="joyL"><meta name="copyright" content="joyL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="仅用于个人复习用参考教材为史林编著的数字信号处理 一、信号和信号处理1、模拟信号和数字信号，离散信号和连续信号模拟信号是在时间和幅度上均具有连续性；数字信号是时间离散，幅度量化为有限字长二进制数的信号。离散信号也即离散时间信号，即时间离散，幅度连续；连续信号时间连续，幅度可以离散也可以连续。（模拟信号一定是连续信号，但连续信号不一定是模拟信号） 二、离散时间信号和系统的时域分析1、LTI系统中卷积">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="joyL">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="仅用于个人复习用参考教材为史林编著的数字信号处理 一、信号和信号处理1、模拟信号和数字信号，离散信号和连续信号模拟信号是在时间和幅度上均具有连续性；数字信号是时间离散，幅度量化为有限字长二进制数的信号。离散信号也即离散时间信号，即时间离散，幅度连续；连续信号时间连续，幅度可以离散也可以连续。（模拟信号一定是连续信号，但连续信号不一定是模拟信号） 二、离散时间信号和系统的时域分析1、LTI系统中卷积">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字信号处理面试题">
 <meta property="og:url" content="http://example.com/2024/06/25/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/index.html">
 <meta property="og:site_name" content="joyL">
 <meta property="og:description" content="仅用于个人复习用参考教材为史林编著的数字信号处理 一、信号和信号处理1、模拟信号和数字信号，离散信号和连续信号模拟信号是在时间和幅度上均具有连续性；数字信号是时间离散，幅度量化为有限字长二进制数的信号。离散信号也即离散时间信号，即时间离散，幅度连续；连续信号时间连续，幅度可以离散也可以连续。（模拟信号一定是连续信号，但连续信号不一定是模拟信号） 二、离散时间信号和系统的时域分析1、LTI系统中卷积">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:published_time" content="2024-06-25T15:20:17.000Z">
-<meta property="article:modified_time" content="2024-06-25T16:06:22.191Z">
+<meta property="article:modified_time" content="2024-07-06T12:14:19.522Z">
 <meta property="article:author" content="joyL">
 <meta property="article:tag" content="保研">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/06/25/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '数字信号处理面试题',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2024-06-26 00:06:22'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>数字信号处理面试题 - joyL</title>
 
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"N9o0VrlSjzXJrteWGgHyWQJ6-MdYXbMMI","app_key":"Df1QA02nohgyQfaWLfRdAQN2","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
       }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
     
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>joyL</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数字信号处理面试题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-25 23:20" pubdate>
+          2024年6月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          341 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 分钟
+        
+      </span>
+    
+
+    
+    
       
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span>次
+        </span>
+        
+      
     
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="joyL"><span class="site-name">joyL</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数字信号处理面试题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-25T15:20:17.000Z" title="发表于 2024-06-25 23:20:17">2024-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-25T16:06:22.191Z" title="更新于 2024-06-26 00:06:22">2024-06-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数字信号处理面试题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><strong>仅用于个人复习用</strong><br>参考教材为史林编著的数字信号处理</p>
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">数字信号处理面试题</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><strong>仅用于个人复习用</strong><br>参考教材为史林编著的数字信号处理</p>
 <h1 id="一、信号和信号处理"><a href="#一、信号和信号处理" class="headerlink" title="一、信号和信号处理"></a>一、信号和信号处理</h1><h2 id="1、模拟信号和数字信号，离散信号和连续信号"><a href="#1、模拟信号和数字信号，离散信号和连续信号" class="headerlink" title="1、模拟信号和数字信号，离散信号和连续信号"></a>1、模拟信号和数字信号，离散信号和连续信号</h2><p>模拟信号是在时间和幅度上均具有连续性；数字信号是时间离散，幅度量化为有限字长二进制数的信号。<br>离散信号也即离散时间信号，即时间离散，幅度连续；连续信号时间连续，幅度可以离散也可以连续。<br>（模拟信号一定是连续信号，但连续信号不一定是模拟信号）</p>
 <h1 id="二、离散时间信号和系统的时域分析"><a href="#二、离散时间信号和系统的时域分析" class="headerlink" title="二、离散时间信号和系统的时域分析"></a>二、离散时间信号和系统的时域分析</h1><h2 id="1、LTI系统中卷积和运算的结合律和分配律的物理意义"><a href="#1、LTI系统中卷积和运算的结合律和分配律的物理意义" class="headerlink" title="1、LTI系统中卷积和运算的结合律和分配律的物理意义"></a>1、LTI系统中卷积和运算的结合律和分配律的物理意义</h2><p>结合律：级联后的单位脉冲响应等于两个系统的各自的脉冲响应的卷积<br>分配律：并联系统的单位脉冲响应等于各自的单位脉冲响应之和。</p>
-<h2 id="2、LTI系统的因果性和稳定性"><a href="#2、LTI系统的因果性和稳定性" class="headerlink" title="2、LTI系统的因果性和稳定性"></a>2、LTI系统的因果性和稳定性</h2><p>因果系统：输出只取决于n时刻以及n时刻以前的输入序列，与n时刻之后的输入序列无关的系统即为因果系统。离散时间LTI系统的充要条件是系统的单位脉冲响应$h(n)$满足：<br>$$<br>h(n)&#x3D;0,n&lt;0<br>$$<br>稳定系统：系统对任意的有界输入序列，其输出也是有界序列，则该系统为稳定系统。离散时间LTI系统具有稳定性的充要条件为系统的单位脉冲响应$h(n)$满足绝对可和，即：<br>$$<br>\sum_{n&#x3D;-\infty}^{\infty} |h(n)| &lt; \infty<br>$$<br><strong>因果的稳定系统</strong>又称为物理可实现系统。</p>
+<h2 id="2、LTI系统的因果性和稳定性"><a href="#2、LTI系统的因果性和稳定性" class="headerlink" title="2、LTI系统的因果性和稳定性"></a>2、LTI系统的因果性和稳定性</h2><p>因果系统：输出只取决于n时刻以及n时刻以前的输入序列，与n时刻之后的输入序列无关的系统即为因果系统。离散时间LTI系统的充要条件是系统的单位脉冲响应$h(n)$满足：</p>
+<script type="math/tex; mode=display">
+h(n)=0,n<0</script><p>稳定系统：系统对任意的有界输入序列，其输出也是有界序列，则该系统为稳定系统。离散时间LTI系统具有稳定性的充要条件为系统的单位脉冲响应$h(n)$满足绝对可和，即：</p>
+<script type="math/tex; mode=display">
+\sum_{n=-\infty}^{\infty} |h(n)| < \infty</script><p><strong>因果的稳定系统</strong>又称为物理可实现系统。</p>
 <h1 id="三、离散时间信号和系统的频域分析"><a href="#三、离散时间信号和系统的频域分析" class="headerlink" title="三、离散时间信号和系统的频域分析"></a>三、离散时间信号和系统的频域分析</h1><h2 id="1、如何求解z反变换？"><a href="#1、如何求解z反变换？" class="headerlink" title="1、如何求解z反变换？"></a>1、如何求解z反变换？</h2><p>留数法，部分分式法和长除法</p>
 <h2 id="2、如何使用留数法，部分分式展开法和长除法"><a href="#2、如何使用留数法，部分分式展开法和长除法" class="headerlink" title="2、如何使用留数法，部分分式展开法和长除法"></a>2、如何使用留数法，部分分式展开法和长除法</h2><p>留数法：根据留数定理，序列$x(n)$等于$X(Z)z^{n-1}$在围线$c$内极点的留数之和，或者围线外的极点的留数之和再取负值。其中围线是$X(z)$的收敛域绕原点的一条逆时针旋转的闭合曲线。根据极点的不同要求划分成不同的区域来求解。</p>
 <p>部分分式展开法： 将原来的$X(z)$展开成几个分式，并且使分式各项的形式能比较容易从已知z变换中反变换出来。需要注意收敛域。</p>
 <p>长除法：用长除法将$X(z)$写成幂级数的形式，幂级数的系数就是序列$x(n)$，这种方法又称为幂级数法。</p>
-<h2 id="3、终值定理的使用条件是什么？"><a href="#3、终值定理的使用条件是什么？" class="headerlink" title="3、终值定理的使用条件是什么？"></a>3、终值定理的使用条件是什么？</h2><p>终值定理只适用于因果序列，且Z变换的极点，除可以有一个一阶极点在z&#x3D;1处外，其他极点均在单位圆内。</p>
+<h2 id="3、终值定理的使用条件是什么？"><a href="#3、终值定理的使用条件是什么？" class="headerlink" title="3、终值定理的使用条件是什么？"></a>3、终值定理的使用条件是什么？</h2><p>终值定理只适用于因果序列，且Z变换的极点，除可以有一个一阶极点在z=1处外，其他极点均在单位圆内。</p>
 <h2 id="4、逆系统的定义："><a href="#4、逆系统的定义：" class="headerlink" title="4、逆系统的定义："></a>4、逆系统的定义：</h2><p>z变换域上表示为两个系统的系统函数相乘等于1。<br>时域上表示为两个系统的单位脉冲响应的卷积为单位脉冲响应。</p>
 <h2 id="5、系统因果性与稳定性在Z变换域上的体现"><a href="#5、系统因果性与稳定性在Z变换域上的体现" class="headerlink" title="5、系统因果性与稳定性在Z变换域上的体现"></a>5、系统因果性与稳定性在Z变换域上的体现</h2><p>因果系统其系统函数的极点分布在某个圆内，收敛域为圆的外部。<br>稳定系统的系统函数的收敛域包含单位圆，收敛域内没有极点。<br>因果稳定系统的系统函数的所有极点一定分布在单位圆内。</p>
 <h2 id="6、系统函数的零极点分布对幅频函数的影响"><a href="#6、系统函数的零极点分布对幅频函数的影响" class="headerlink" title="6、系统函数的零极点分布对幅频函数的影响"></a>6、系统函数的零极点分布对幅频函数的影响</h2><p>极点影响系统幅频响应的峰值位置及尖锐程度；零点影响幅频响应的谷值与谷深。<br>极点越靠近单位圆，峰值越高越尖锐；零点越靠近单位圆，谷值越趋向于0。</p>
@@ -169,40 +334,469 @@
 <h2 id="8、什么是最小相位系统"><a href="#8、什么是最小相位系统" class="headerlink" title="8、什么是最小相位系统"></a>8、什么是最小相位系统</h2><p>系统函数的零点和极点都在Z平面的单位圆内的因果系统。<br>在具有相同的幅频特性的同阶系统中，最小相位系统具有最大的相位和最小的延时。</p>
 <h2 id="9、为什么全通滤波器和最小相位系统可以表示任意因果系统"><a href="#9、为什么全通滤波器和最小相位系统可以表示任意因果系统" class="headerlink" title="9、为什么全通滤波器和最小相位系统可以表示任意因果系统"></a>9、为什么全通滤波器和最小相位系统可以表示任意因果系统</h2><ol>
 <li>幅度响应匹配：因为最小相位系统 $H_{min}(z)$ 与原系统$H(z)$具有相同的幅度响应，所以我们可以确保幅度响应的匹配。</li>
-<li>相位响应调整：通过引入全通滤波器 $A(z)$，我们可以调整相位响应而不改变幅度响应。全通滤波器的幅度响应恒为1，但其相位响应可以是任意的。因此，可以通过适当设计全通滤波器 $A(z)$ 来调整相位响应，使得组合系统 $H_{min}(z)⋅A(z)$的相位响应与原系统 $H(z)$ 相匹配。</li>
-</ol>
-<h2 id="10、"><a href="#10、" class="headerlink" title="10、"></a>10、</h2><h1 id="四、离散傅里叶变换"><a href="#四、离散傅里叶变换" class="headerlink" title="四、离散傅里叶变换"></a>四、离散傅里叶变换</h1><h2 id="1、离散傅里叶变换——有限长序列的离散频域表示"><a href="#1、离散傅里叶变换——有限长序列的离散频域表示" class="headerlink" title="1、离散傅里叶变换——有限长序列的离散频域表示"></a>1、离散傅里叶变换——有限长序列的离散频域表示</h2><p>是对周期序列得到的周期的离散频谱取主值区间。</p>
-<h2 id="2、周期序列的N点离散傅里叶级数的含义"><a href="#2、周期序列的N点离散傅里叶级数的含义" class="headerlink" title="2、周期序列的N点离散傅里叶级数的含义"></a>2、周期序列的N点离散傅里叶级数的含义</h2><p>周期序列的Z变换在单位圆上的采样值，也即频域采样，对序列傅里叶变换得到的频谱在0-2π上等间隔采样，采样间隔为$\frac{2\pi}{N}$。</p>
-<h2 id="3、离散傅里叶变换和离散时间傅里叶变换的区别"><a href="#3、离散傅里叶变换和离散时间傅里叶变换的区别" class="headerlink" title="3、离散傅里叶变换和离散时间傅里叶变换的区别"></a>3、离散傅里叶变换和离散时间傅里叶变换的区别</h2><p>离散傅里叶变换(DFT)对频域进行采样，是对序列z变换在z平面的单位圆上做N点等间隔采样。<br>离散时间傅里叶变换(DTFT)没有对频域采样，仅仅是对频谱的周期延拓，是z变换在单位圆上的值。</p>
-<h2 id="4、有限长序列的m点圆周移位对频率响应的影响"><a href="#4、有限长序列的m点圆周移位对频率响应的影响" class="headerlink" title="4、有限长序列的m点圆周移位对频率响应的影响"></a>4、有限长序列的m点圆周移位对频率响应的影响</h2><p>只引入一个和频率成正比的线性相移，对幅度没有影响。（时域时移，频域相移）</p>
-<h2 id="5、L点循环卷积的步骤"><a href="#5、L点循环卷积的步骤" class="headerlink" title="5、L点循环卷积的步骤"></a>5、L点循环卷积的步骤</h2><p>先将两个序列补零至L点序列，然后做L点周期延拓，再对周期延拓后的两个序列的周期卷积和得到$y(n)$,取$y(n)$的主值区间。</p>
-<h2 id="6、循环卷积与线性卷积的关系"><a href="#6、循环卷积与线性卷积的关系" class="headerlink" title="6、循环卷积与线性卷积的关系"></a>6、循环卷积与线性卷积的关系</h2><p>由线性卷积求L点循环卷积：两序列的线性卷积以L为周期的周期延拓后混叠相加序列的主值序列即为两序列的L点循环卷积。<br>由循环卷积求线性卷积：当$L&gt;N_1+N_2-1$时，两序列的L点循环卷积就能代表两个序列的线性卷积。</p>
-<h2 id="7、如何利用DFT进行线性卷积"><a href="#7、如何利用DFT进行线性卷积" class="headerlink" title="7、如何利用DFT进行线性卷积"></a>7、如何利用DFT进行线性卷积</h2><p>首先对两序列补0，补至序列长度大于或等于两序列的长度之和再减一，分别对补零后的序列作DFT变换得到两个序列的频谱X1(M)和X2(M)，再将两个序列相乘得到一个新的频谱Y(M),再对Y(M)做反傅里叶变换即可得到原序列线性卷积后的序列。</p>
-<h2 id="8、什么是频率分辨率，如何提高频率分辨率？"><a href="#8、什么是频率分辨率，如何提高频率分辨率？" class="headerlink" title="8、什么是频率分辨率，如何提高频率分辨率？"></a>8、什么是频率分辨率，如何提高频率分辨率？</h2><p>$$<br>\Delta f&#x3D;\frac{f_s}{N}&#x3D;\frac{1}{T_p}<br>$$<br>相邻两个谱峰的最小间隔,信号持续时间为$T_p$，$T_p&#x3D;NT$,T为采样时间间隔，N为信号的采样点数。<br>提高频率分辨率则需要提高信号采样持续时间。</p>
-<h2 id="9、频域采样定理"><a href="#9、频域采样定理" class="headerlink" title="9、频域采样定理"></a>9、频域采样定理</h2><p>频域采样会造成时域上的周期延拓，故只有当采样点数N大于或等于序列长度M时，频域采样后得到的频谱才能无失真地还原序列，否则会产生时域的混叠失真。</p>
-<h2 id="10、造成频谱混叠失真的原因"><a href="#10、造成频谱混叠失真的原因" class="headerlink" title="10、造成频谱混叠失真的原因"></a>10、造成频谱混叠失真的原因</h2><ol>
+<li>相位响应调整：通过引入全通滤波器 $A(z)$，我们可以调整相位响应而不改变幅度响应。全通滤波器的幅度响应恒为1，但其相位响应可以是任意的。因此，可以通过适当设计全通滤波器 $A(z)$ 来调整相位响应，使得组合系统 $H_{min}(z)⋅A(z)$的相位响应与原系统 $H(z)$ 相匹配。<h2 id="10、"><a href="#10、" class="headerlink" title="10、"></a>10、</h2><h1 id="四、离散傅里叶变换"><a href="#四、离散傅里叶变换" class="headerlink" title="四、离散傅里叶变换"></a>四、离散傅里叶变换</h1><h2 id="1、离散傅里叶变换——有限长序列的离散频域表示"><a href="#1、离散傅里叶变换——有限长序列的离散频域表示" class="headerlink" title="1、离散傅里叶变换——有限长序列的离散频域表示"></a>1、离散傅里叶变换——有限长序列的离散频域表示</h2>是对周期序列得到的周期的离散频谱取主值区间。<h2 id="2、周期序列的N点离散傅里叶级数的含义"><a href="#2、周期序列的N点离散傅里叶级数的含义" class="headerlink" title="2、周期序列的N点离散傅里叶级数的含义"></a>2、周期序列的N点离散傅里叶级数的含义</h2>周期序列的Z变换在单位圆上的采样值，也即频域采样，对序列傅里叶变换得到的频谱在0-2π上等间隔采样，采样间隔为$\frac{2\pi}{N}$。<h2 id="3、离散傅里叶变换和离散时间傅里叶变换的区别"><a href="#3、离散傅里叶变换和离散时间傅里叶变换的区别" class="headerlink" title="3、离散傅里叶变换和离散时间傅里叶变换的区别"></a>3、离散傅里叶变换和离散时间傅里叶变换的区别</h2>离散傅里叶变换(DFT)对频域进行采样，是对序列z变换在z平面的单位圆上做N点等间隔采样。<br>离散时间傅里叶变换(DTFT)没有对频域采样，仅仅是对频谱的周期延拓，是z变换在单位圆上的值。<h2 id="4、有限长序列的m点圆周移位对频率响应的影响"><a href="#4、有限长序列的m点圆周移位对频率响应的影响" class="headerlink" title="4、有限长序列的m点圆周移位对频率响应的影响"></a>4、有限长序列的m点圆周移位对频率响应的影响</h2>只引入一个和频率成正比的线性相移，对幅度没有影响。（时域时移，频域相移）<h2 id="5、L点循环卷积的步骤"><a href="#5、L点循环卷积的步骤" class="headerlink" title="5、L点循环卷积的步骤"></a>5、L点循环卷积的步骤</h2>先将两个序列补零至L点序列，然后做L点周期延拓，再对周期延拓后的两个序列的周期卷积和得到$y(n)$,取$y(n)$的主值区间。<h2 id="6、循环卷积与线性卷积的关系"><a href="#6、循环卷积与线性卷积的关系" class="headerlink" title="6、循环卷积与线性卷积的关系"></a>6、循环卷积与线性卷积的关系</h2>由线性卷积求L点循环卷积：两序列的线性卷积以L为周期的周期延拓后混叠相加序列的主值序列即为两序列的L点循环卷积。<br>由循环卷积求线性卷积：当$L&gt;N_1+N_2-1$时，两序列的L点循环卷积就能代表两个序列的线性卷积。<h2 id="7、如何利用DFT进行线性卷积"><a href="#7、如何利用DFT进行线性卷积" class="headerlink" title="7、如何利用DFT进行线性卷积"></a>7、如何利用DFT进行线性卷积</h2>首先对两序列补0，补至序列长度大于或等于两序列的长度之和再减一，分别对补零后的序列作DFT变换得到两个序列的频谱X1(M)和X2(M)，再将两个序列相乘得到一个新的频谱Y(M),再对Y(M)做反傅里叶变换即可得到原序列线性卷积后的序列。<h2 id="8、什么是频率分辨率，如何提高频率分辨率？"><a href="#8、什么是频率分辨率，如何提高频率分辨率？" class="headerlink" title="8、什么是频率分辨率，如何提高频率分辨率？"></a>8、什么是频率分辨率，如何提高频率分辨率？</h2><script type="math/tex; mode=display">
+\Delta f=\frac{f_s}{N}=\frac{1}{T_p}</script>相邻两个谱峰的最小间隔,信号持续时间为$T_p$，$T_p=NT$,T为采样时间间隔，N为信号的采样点数。<br>提高频率分辨率则需要提高信号采样持续时间。<h2 id="9、频域采样定理"><a href="#9、频域采样定理" class="headerlink" title="9、频域采样定理"></a>9、频域采样定理</h2>频域采样会造成时域上的周期延拓，故只有当采样点数N大于或等于序列长度M时，频域采样后得到的频谱才能无失真地还原序列，否则会产生时域的混叠失真。<h2 id="10、造成频谱混叠失真的原因"><a href="#10、造成频谱混叠失真的原因" class="headerlink" title="10、造成频谱混叠失真的原因"></a>10、造成频谱混叠失真的原因</h2></li>
 <li>不满足时域采样定理，即奈奎斯特采样频率。$f_s&gt;2f_c$</li>
 <li>时域上的突变会造成频谱的拖尾现象。例如在时域上加矩形窗将无限长的时域信号截断为有限长的时域信号，会造成频谱泄露，导致频谱拖尾和展宽，造成码间干扰。<br>11、如何改善频谱混叠现象</li>
 <li>选择足够高的信号采样频率。</li>
-<li>在采样前利用模拟低通滤波器对连续时间信号进行预处理，将其上限频率$f_{max}$限制在采样频率$f_s$的一半以内，以减少混叠程度，提高频谱分析精度。</li>
-</ol>
-<h2 id="12、什么是频谱泄露，如何改善频谱泄露？"><a href="#12、什么是频谱泄露，如何改善频谱泄露？" class="headerlink" title="12、什么是频谱泄露，如何改善频谱泄露？"></a>12、什么是频谱泄露，如何改善频谱泄露？</h2><p>频谱泄露是由于将无限长的信号截断为有限长的信号造成的截断效应引起的频谱展宽拖尾，使得分析结果中出现原本没有的频率分量。而对于周期信号，必须使抽样后仍然是周期序列，且截断的数据长度必须等于周期序列的周期整数倍，否则也会产生频谱混叠。<br>改善方案：</p>
-<ol>
+<li>在采样前利用模拟低通滤波器对连续时间信号进行预处理，将其上限频率$f_{max}$限制在采样频率$f_s$的一半以内，以减少混叠程度，提高频谱分析精度。<h2 id="12、什么是频谱泄露，如何改善频谱泄露？"><a href="#12、什么是频谱泄露，如何改善频谱泄露？" class="headerlink" title="12、什么是频谱泄露，如何改善频谱泄露？"></a>12、什么是频谱泄露，如何改善频谱泄露？</h2>频谱泄露是由于将无限长的信号截断为有限长的信号造成的截断效应引起的频谱展宽拖尾，使得分析结果中出现原本没有的频率分量。而对于周期信号，必须使抽样后仍然是周期序列，且截断的数据长度必须等于周期序列的周期整数倍，否则也会产生频谱混叠。<br>改善方案：</li>
 <li>缓慢截断，换成副瓣更小的窗函数。</li>
-<li>加大窗宽N，使频谱的主瓣更窄，减少频谱泄露。</li>
-</ol>
-<h2 id="13、什么是栅栏效应，如何改善栅栏效应？"><a href="#13、什么是栅栏效应，如何改善栅栏效应？" class="headerlink" title="13、什么是栅栏效应，如何改善栅栏效应？"></a>13、什么是栅栏效应，如何改善栅栏效应？</h2><p>栅栏效应由于频域采样，只能得到采样点处的频谱值，丢失了某些重要的谱线导致信号失真。<br>改善方法：在原序列末端补0，或者增加时域采样点数，提高采样样频率，尽可能获得更多信息。</p>
-<h1 id="五、FFT"><a href="#五、FFT" class="headerlink" title="五、FFT"></a>五、FFT</h1><h2 id="1、为什么要引入FFT-FFT的原理是什么"><a href="#1、为什么要引入FFT-FFT的原理是什么" class="headerlink" title="1、为什么要引入FFT,FFT的原理是什么"></a>1、为什么要引入FFT,FFT的原理是什么</h2><p>FFT可以改善DFT的计算量过大的问题。FFT是将原来的长序列分解成两个短序列，利用旋转因子的周期性，对称性和可约性来简化运算。<br>基于时间的FFT是将长序列按奇偶分成两个短序列，先做一次时域到频域的变换，后面则是频域的合成。(DIT-FFT:时域奇偶分组，频域前后分组)。基于频率的FFT是将长序列前后分成两个短序列，不断往下分，最后做一次时域到频域的变换。(DIF-FFT:频域奇偶分组，时域前后分组)。并且FFT的点数必须是2的N次幂。</p>
-<h2 id="2、基2FFT的复数乘法和复数加法的次数"><a href="#2、基2FFT的复数乘法和复数加法的次数" class="headerlink" title="2、基2FFT的复数乘法和复数加法的次数"></a>2、基2FFT的复数乘法和复数加法的次数</h2><p>$$<br>乘法次数：C_m&#x3D;\frac{N}{2}log_2N<br>$$<br>$$<br>加法次数：C_A&#x3D;Nlog_2N<br>$$</p>
-<h1 id="六、IIR和FIR滤波器"><a href="#六、IIR和FIR滤波器" class="headerlink" title="六、IIR和FIR滤波器"></a>六、IIR和FIR滤波器</h1><h2 id="1、比较IIR和FIR滤波器在性能和结构上各有什么优缺点"><a href="#1、比较IIR和FIR滤波器在性能和结构上各有什么优缺点" class="headerlink" title="1、比较IIR和FIR滤波器在性能和结构上各有什么优缺点"></a>1、比较IIR和FIR滤波器在性能和结构上各有什么优缺点</h2><p>FIR滤波器是单位脉冲响应为有限长序列的系统，FIR可实现线性相位并保证系统的稳定性，但实现起来较复杂，需要借助计算机设计；而IIR滤波器是单位脉冲响应为无限长序列的系统。</p>
-<h2 id="2、FIR滤波器的设计方法"><a href="#2、FIR滤波器的设计方法" class="headerlink" title="2、FIR滤波器的设计方法"></a>2、FIR滤波器的设计方法</h2><ol>
+<li>加大窗宽N，使频谱的主瓣更窄，减少频谱泄露。<h2 id="13、什么是栅栏效应，如何改善栅栏效应？"><a href="#13、什么是栅栏效应，如何改善栅栏效应？" class="headerlink" title="13、什么是栅栏效应，如何改善栅栏效应？"></a>13、什么是栅栏效应，如何改善栅栏效应？</h2>栅栏效应由于频域采样，只能得到采样点处的频谱值，丢失了某些重要的谱线导致信号失真。<br>改善方法：在原序列末端补0，或者增加时域采样点数，提高采样样频率，尽可能获得更多信息。<h1 id="五、FFT"><a href="#五、FFT" class="headerlink" title="五、FFT"></a>五、FFT</h1><h2 id="1、为什么要引入FFT-FFT的原理是什么"><a href="#1、为什么要引入FFT-FFT的原理是什么" class="headerlink" title="1、为什么要引入FFT,FFT的原理是什么"></a>1、为什么要引入FFT,FFT的原理是什么</h2>FFT可以改善DFT的计算量过大的问题。FFT是将原来的长序列分解成两个短序列，利用旋转因子的周期性，对称性和可约性来简化运算。<br>基于时间的FFT是将长序列按奇偶分成两个短序列，先做一次时域到频域的变换，后面则是频域的合成。(DIT-FFT:时域奇偶分组，频域前后分组)。基于频率的FFT是将长序列前后分成两个短序列，不断往下分，最后做一次时域到频域的变换。(DIF-FFT:频域奇偶分组，时域前后分组)。并且FFT的点数必须是2的N次幂。<h2 id="2、基2FFT的复数乘法和复数加法的次数"><a href="#2、基2FFT的复数乘法和复数加法的次数" class="headerlink" title="2、基2FFT的复数乘法和复数加法的次数"></a>2、基2FFT的复数乘法和复数加法的次数</h2><script type="math/tex; mode=display">
+乘法次数：C_m=\frac{N}{2}log_2N</script><script type="math/tex; mode=display">
+加法次数：C_A=Nlog_2N</script><h1 id="六、IIR和FIR滤波器"><a href="#六、IIR和FIR滤波器" class="headerlink" title="六、IIR和FIR滤波器"></a>六、IIR和FIR滤波器</h1><h2 id="1、比较IIR和FIR滤波器在性能和结构上各有什么优缺点"><a href="#1、比较IIR和FIR滤波器在性能和结构上各有什么优缺点" class="headerlink" title="1、比较IIR和FIR滤波器在性能和结构上各有什么优缺点"></a>1、比较IIR和FIR滤波器在性能和结构上各有什么优缺点</h2>FIR滤波器是单位脉冲响应为有限长序列的系统，FIR可实现线性相位并保证系统的稳定性，但实现起来较复杂，需要借助计算机设计；而IIR滤波器是单位脉冲响应为无限长序列的系统。<h2 id="2、FIR滤波器的设计方法"><a href="#2、FIR滤波器的设计方法" class="headerlink" title="2、FIR滤波器的设计方法"></a>2、FIR滤波器的设计方法</h2></li>
 <li>窗函数设计法——时域逼近的思想。根据给定的系统函数，利用傅里叶反变换计算其单位脉冲响应。一般求出的单位脉冲响应是非因果的无限长序列，然后加窗截断，使之成为因果的有限长序列。</li>
-<li>频域采样设计法——通过对系统频率响应函数进行等间隔采样，然后进行IDFT变换，得到单位脉冲响应。</li>
-</ol>
-<h2 id="3、IIR滤波器的设计步骤"><a href="#3、IIR滤波器的设计步骤" class="headerlink" title="3、IIR滤波器的设计步骤"></a>3、IIR滤波器的设计步骤</h2><ol>
+<li>频域采样设计法——通过对系统频率响应函数进行等间隔采样，然后进行IDFT变换，得到单位脉冲响应。<h2 id="3、IIR滤波器的设计步骤"><a href="#3、IIR滤波器的设计步骤" class="headerlink" title="3、IIR滤波器的设计步骤"></a>3、IIR滤波器的设计步骤</h2></li>
 <li>将数字滤波器的设计指标转换成模拟滤波器的设计指标。</li>
 <li>设计出满足指标的模拟滤波器。首先进行频率转换，设计出原形低通滤波器，通过复频域的变换得出所需的模拟滤波器的系统函数。</li>
-<li>利用双线性变换法或者脉冲响应不变法将模拟滤波器转换成数字滤波器。</li>
+<li>利用双线性变换法或者脉冲响应不变法将模拟滤波器转换成数字滤波器。<h2 id="4、双线性变换法和脉冲响应不变法的原理和优缺点"><a href="#4、双线性变换法和脉冲响应不变法的原理和优缺点" class="headerlink" title="4、双线性变换法和脉冲响应不变法的原理和优缺点"></a>4、双线性变换法和脉冲响应不变法的原理和优缺点</h2>双线性变换法是将非带限的模拟滤波器通过非线性映射为最高角频率为π/T的带限模拟滤波器。其优点是不会产生频谱混叠，缺点是由于非线性映射会导致幅度失真。<br>脉冲响应不变法是利用时域逼近的思想，利用数字滤波器的单位脉冲响应去模仿模拟滤波器的单位脉冲响应。其优点是设计出来的数字滤波器具有线性相位，不会产生失真。缺点是若模拟滤波器的频率响应不是带限信号，则设计出来的数字滤波器的频率响应会有混叠，只能用于设计带限的模拟滤波器。</li>
 </ol>
-<h2 id="4、双线性变换法和脉冲响应不变法的原理和优缺点"><a href="#4、双线性变换法和脉冲响应不变法的原理和优缺点" class="headerlink" title="4、双线性变换法和脉冲响应不变法的原理和优缺点"></a>4、双线性变换法和脉冲响应不变法的原理和优缺点</h2><p>双线性变换法是将非带限的模拟滤波器通过非线性映射为最高角频率为π&#x2F;T的带限模拟滤波器。其优点是不会产生频谱混叠，缺点是由于非线性映射会导致幅度失真。<br>脉冲响应不变法是利用时域逼近的思想，利用数字滤波器的单位脉冲响应去模仿模拟滤波器的单位脉冲响应。其优点是设计出来的数字滤波器具有线性相位，不会产生失真。缺点是若模拟滤波器的频率响应不是带限信号，则设计出来的数字滤波器的频率响应会有混叠，只能用于设计带限的模拟滤波器。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">joyL</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/06/25/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/">http://example.com/2024/06/25/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">joyL</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%BF%9D%E7%A0%94/">保研</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/06/08/demo/" title="demo"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">demo</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">joyL</div><div class="author-info__description">joyL的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BF%A1%E5%8F%B7%E5%92%8C%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">一、信号和信号处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%A8%A1%E6%8B%9F%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%EF%BC%8C%E7%A6%BB%E6%95%A3%E4%BF%A1%E5%8F%B7%E5%92%8C%E8%BF%9E%E7%BB%AD%E4%BF%A1%E5%8F%B7"><span class="toc-number">1.1.</span> <span class="toc-text">1、模拟信号和数字信号，离散信号和连续信号</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%A6%BB%E6%95%A3%E6%97%B6%E9%97%B4%E4%BF%A1%E5%8F%B7%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%97%B6%E5%9F%9F%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">二、离散时间信号和系统的时域分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81LTI%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%8D%B7%E7%A7%AF%E5%92%8C%E8%BF%90%E7%AE%97%E7%9A%84%E7%BB%93%E5%90%88%E5%BE%8B%E5%92%8C%E5%88%86%E9%85%8D%E5%BE%8B%E7%9A%84%E7%89%A9%E7%90%86%E6%84%8F%E4%B9%89"><span class="toc-number">2.1.</span> <span class="toc-text">1、LTI系统中卷积和运算的结合律和分配律的物理意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81LTI%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9B%A0%E6%9E%9C%E6%80%A7%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7"><span class="toc-number">2.2.</span> <span class="toc-text">2、LTI系统的因果性和稳定性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%A6%BB%E6%95%A3%E6%97%B6%E9%97%B4%E4%BF%A1%E5%8F%B7%E5%92%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%A2%91%E5%9F%9F%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">三、离散时间信号和系统的频域分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%A6%82%E4%BD%95%E6%B1%82%E8%A7%A3z%E5%8F%8D%E5%8F%98%E6%8D%A2%EF%BC%9F"><span class="toc-number">3.1.</span> <span class="toc-text">1、如何求解z反变换？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E7%95%99%E6%95%B0%E6%B3%95%EF%BC%8C%E9%83%A8%E5%88%86%E5%88%86%E5%BC%8F%E5%B1%95%E5%BC%80%E6%B3%95%E5%92%8C%E9%95%BF%E9%99%A4%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">2、如何使用留数法，部分分式展开法和长除法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%BB%88%E5%80%BC%E5%AE%9A%E7%90%86%E7%9A%84%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">3.3.</span> <span class="toc-text">3、终值定理的使用条件是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E9%80%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="toc-number">3.4.</span> <span class="toc-text">4、逆系统的定义：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E7%B3%BB%E7%BB%9F%E5%9B%A0%E6%9E%9C%E6%80%A7%E4%B8%8E%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%9C%A8Z%E5%8F%98%E6%8D%A2%E5%9F%9F%E4%B8%8A%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-number">3.5.</span> <span class="toc-text">5、系统因果性与稳定性在Z变换域上的体现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0%E7%9A%84%E9%9B%B6%E6%9E%81%E7%82%B9%E5%88%86%E5%B8%83%E5%AF%B9%E5%B9%85%E9%A2%91%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">3.6.</span> <span class="toc-text">6、系统函数的零极点分布对幅频函数的影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%A8%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-number">3.7.</span> <span class="toc-text">7、什么是全通滤波器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%9C%80%E5%B0%8F%E7%9B%B8%E4%BD%8D%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.8.</span> <span class="toc-text">8、什么是最小相位系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E5%85%A8%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%92%8C%E6%9C%80%E5%B0%8F%E7%9B%B8%E4%BD%8D%E7%B3%BB%E7%BB%9F%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E4%BB%BB%E6%84%8F%E5%9B%A0%E6%9E%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.9.</span> <span class="toc-text">9、为什么全通滤波器和最小相位系统可以表示任意因果系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81"><span class="toc-number">3.10.</span> <span class="toc-text">10、</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2"><span class="toc-number">4.</span> <span class="toc-text">四、离散傅里叶变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E2%80%94%E2%80%94%E6%9C%89%E9%99%90%E9%95%BF%E5%BA%8F%E5%88%97%E7%9A%84%E7%A6%BB%E6%95%A3%E9%A2%91%E5%9F%9F%E8%A1%A8%E7%A4%BA"><span class="toc-number">4.1.</span> <span class="toc-text">1、离散傅里叶变换——有限长序列的离散频域表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%91%A8%E6%9C%9F%E5%BA%8F%E5%88%97%E7%9A%84N%E7%82%B9%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">4.2.</span> <span class="toc-text">2、周期序列的N点离散傅里叶级数的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%A6%BB%E6%95%A3%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E5%92%8C%E7%A6%BB%E6%95%A3%E6%97%B6%E9%97%B4%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">4.3.</span> <span class="toc-text">3、离散傅里叶变换和离散时间傅里叶变换的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%9C%89%E9%99%90%E9%95%BF%E5%BA%8F%E5%88%97%E7%9A%84m%E7%82%B9%E5%9C%86%E5%91%A8%E7%A7%BB%E4%BD%8D%E5%AF%B9%E9%A2%91%E7%8E%87%E5%93%8D%E5%BA%94%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">4.4.</span> <span class="toc-text">4、有限长序列的m点圆周移位对频率响应的影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81L%E7%82%B9%E5%BE%AA%E7%8E%AF%E5%8D%B7%E7%A7%AF%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.5.</span> <span class="toc-text">5、L点循环卷积的步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E5%BE%AA%E7%8E%AF%E5%8D%B7%E7%A7%AF%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%8D%B7%E7%A7%AF%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.6.</span> <span class="toc-text">6、循环卷积与线性卷积的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8DFT%E8%BF%9B%E8%A1%8C%E7%BA%BF%E6%80%A7%E5%8D%B7%E7%A7%AF"><span class="toc-number">4.7.</span> <span class="toc-text">7、如何利用DFT进行线性卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%A2%91%E7%8E%87%E5%88%86%E8%BE%A8%E7%8E%87%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E9%A2%91%E7%8E%87%E5%88%86%E8%BE%A8%E7%8E%87%EF%BC%9F"><span class="toc-number">4.8.</span> <span class="toc-text">8、什么是频率分辨率，如何提高频率分辨率？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E9%A2%91%E5%9F%9F%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86"><span class="toc-number">4.9.</span> <span class="toc-text">9、频域采样定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81%E9%80%A0%E6%88%90%E9%A2%91%E8%B0%B1%E6%B7%B7%E5%8F%A0%E5%A4%B1%E7%9C%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">4.10.</span> <span class="toc-text">10、造成频谱混叠失真的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%A2%91%E8%B0%B1%E6%B3%84%E9%9C%B2%EF%BC%8C%E5%A6%82%E4%BD%95%E6%94%B9%E5%96%84%E9%A2%91%E8%B0%B1%E6%B3%84%E9%9C%B2%EF%BC%9F"><span class="toc-number">4.11.</span> <span class="toc-text">12、什么是频谱泄露，如何改善频谱泄露？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%A0%85%E6%A0%8F%E6%95%88%E5%BA%94%EF%BC%8C%E5%A6%82%E4%BD%95%E6%94%B9%E5%96%84%E6%A0%85%E6%A0%8F%E6%95%88%E5%BA%94%EF%BC%9F"><span class="toc-number">4.12.</span> <span class="toc-text">13、什么是栅栏效应，如何改善栅栏效应？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81FFT"><span class="toc-number">5.</span> <span class="toc-text">五、FFT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%BC%95%E5%85%A5FFT-FFT%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">5.1.</span> <span class="toc-text">1、为什么要引入FFT,FFT的原理是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%9F%BA2FFT%E7%9A%84%E5%A4%8D%E6%95%B0%E4%B9%98%E6%B3%95%E5%92%8C%E5%A4%8D%E6%95%B0%E5%8A%A0%E6%B3%95%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="toc-number">5.2.</span> <span class="toc-text">2、基2FFT的复数乘法和复数加法的次数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81IIR%E5%92%8CFIR%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-number">6.</span> <span class="toc-text">六、IIR和FIR滤波器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%AF%94%E8%BE%83IIR%E5%92%8CFIR%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%9C%A8%E6%80%A7%E8%83%BD%E5%92%8C%E7%BB%93%E6%9E%84%E4%B8%8A%E5%90%84%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">6.1.</span> <span class="toc-text">1、比较IIR和FIR滤波器在性能和结构上各有什么优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81FIR%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.</span> <span class="toc-text">2、FIR滤波器的设计方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81IIR%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%AD%A5%E9%AA%A4"><span class="toc-number">6.3.</span> <span class="toc-text">3、IIR滤波器的设计步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%8F%8C%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2%E6%B3%95%E5%92%8C%E8%84%89%E5%86%B2%E5%93%8D%E5%BA%94%E4%B8%8D%E5%8F%98%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E5%92%8C%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">6.4.</span> <span class="toc-text">4、双线性变换法和脉冲响应不变法的原理和优缺点</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/25/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/" title="数字信号处理面试题">数字信号处理面试题</a><time datetime="2024-06-25T15:20:17.000Z" title="发表于 2024-06-25 23:20:17">2024-06-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/08/demo/" title="demo">demo</a><time datetime="2024-06-08T15:43:55.000Z" title="发表于 2024-06-08 23:43:55">2024-06-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/08/hello-world/" title="Hello World">Hello World</a><time datetime="2024-06-07T16:29:42.577Z" title="发表于 2024-06-08 00:29:42">2024-06-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By joyL</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E4%BF%9D%E7%A0%94/" class="print-no-link">#保研</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数字信号处理面试题</div>
+      <div>http://example.com/2024/06/25/数字信号处理面试准备/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>joyL</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/08/demo/" title="demo">
+                        <span class="hidden-mobile">demo</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"N9o0VrlSjzXJrteWGgHyWQJ6-MdYXbMMI","appKey":"Df1QA02nohgyQfaWLfRdAQN2","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量
+        <span id="leancloud-site-pv"></span>
+        次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数
+        <span id="leancloud-site-uv"></span>
+        人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
